@@ -1,0 +1,73 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+
+
+<section class="section">
+
+{% set successMsg = app.flashes('success') %}
+{% if successMsg %}
+<div class="container">
+	<div class="notification is-success">
+		<button class="delete"></button>
+		{% for message in successMsg %}    
+    	<p>{{ message }}</p>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}
+
+{% set errorMsg = app.flashes('error') %}
+{% if errorMsg %}
+<div class="container">
+	<div class="notification is-danger">
+		<button class="delete"></button>
+		{% for message in errorMsg %}    
+    	<p>{{ message }}</p>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}
+
+
+
+	{% if page.breadcrumb %}
+ <div class="container">
+
+	{% for item in page.breadcrumb %}
+	<a href="{{ path('wiki_show', {slug: item.getInternalKey}) }}">{{ item.slug }}</a>{% if not loop.last %} / {% endif %} 
+		
+	{% endfor %}
+</div>
+	{% endif %}
+
+ <div class="container">
+ <div class="content">
+	{{ page.content|raw }}
+	</div>
+	</div>
+
+ <div class="container">
+<hr>
+	<p>
+	<a class="button is-primary" href="{{ path('page_form', {slug: page.slug}) }}">Bearbeiten</a>
+&nbsp;
+<a class="button is-primary" href="{{ path('page_delete', {slug: page.slug}) }}">Löschen</a>
+	</p>
+</div>
+
+</section>
+
+
+{% endblock %}
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script>
+ $(function(){
+		$('.notification > .delete').on('click', function() {
+			$(this).parent().hide();
+		});
+});
+
+</script>
+{% endblock %}

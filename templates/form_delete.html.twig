@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{# templates/lucky/test.html.twig #}
+{% block body %}
+
+
+<section class="section">
+
+	{% if page.breadcrumb %}
+ <div class="container">
+{% for item in page.breadcrumb %}
+<a href="{{ path('wiki_show', {slug: item.getInternalKey}) }}">{{ item.slug }}</a>{% if not loop.last %} / {% endif %}
+	
+{% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+
+<h2 class="title is-2">Soll die Seite "{{ page.slug }}" wirklich gelöscht werden?</h2>
+
+<form action="/delete" method="POST">
+
+<input type="hidden" name="slug" value="{{ page.slug }}"/>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-danger" type="submit">Ja</button>
+  </div>
+  <div class="control">
+    <a href="{{ path('wiki_show', { slug: page.slug }) }}" class="button is-link">Nein</a>
+  </div>
+</div>
+
+
+
+</form>
+</div>
+
+</section>
+{% endblock %}

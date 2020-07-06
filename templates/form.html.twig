@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+<section class="section">
+
+	{% if page.breadcrumb %}
+ <div class="container">
+{% for item in page.breadcrumb %}
+<a href="{{ path('wiki_show', {slug: item.getInternalKey}) }}">{{ item.slug }}</a>{% if not loop.last %} / {% endif %}
+	
+{% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+
+<form action="{{ path('wiki_save') }}" method="POST">
+
+<div class="field">
+  <label class="label">Titel / Slug</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Title / Slug" name="slug" value="{{ page.slug }}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Message</label>
+  <div class="control">
+    
+		<textarea class="textarea" placeholder="Content" name="content" cols="50" rows="10">{{ page.content }}</textarea>
+
+  </div>
+</div>
+
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-primary" type="submit">Speichern</button>
+  </div>
+  <div class="control">
+  {% if cancelToParent %}
+    <a class="button is-link" href="{{ path('wiki_show', {slug: page.parentSlug }) }}">Abbrechen</a>
+    {% else %}
+    <a class="button is-link" href="{{ path('wiki_show', {slug: page.slug }) }}">Abbrechen</a>
+    {% endif %}
+  </div>
+</div>
+
+
+
+<input type="hidden" name="parentSlug" value="{{ page.parentSlug }}"/>
+
+</form>
+</div>
+
+</section>
+{% endblock %}

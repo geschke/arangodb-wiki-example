@@ -1,0 +1,44 @@
+{% extends "base_raw.html.twig" %}
+{% block body %}
+
+<br>
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Welcome to AZWiki!
+      </h1>
+      <h2 class="subtitle">
+        <a href="{{ path('wiki_show') }}">Wiki</a>
+
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<br>
+<section class="hero is-info is-medium  is-bold">
+  <div class="hero-body">
+    <div class="container">
+     
+      <h2 class="subtitle">
+        Using PHP 7, Symfony 5, ArangoDB 3.6, Bulma CSS Framework, Bulmaswatch, Font Awesome 5 (Free)
+      </h2>
+    </div>
+  </div>
+</section>
+<br>
+
+
+
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>AZWiki</strong> by <a href="https://www.kuerbis.org">Ralf Geschke</a>. The source code is licensed
+      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. 
+    </p>
+  </div>
+</footer>
+{% endblock %}

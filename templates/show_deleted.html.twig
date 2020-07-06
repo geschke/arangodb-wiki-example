@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+
+<section class="section">
+
+	{% if breadcrumb %}
+ <div class="container">
+
+	{% for item in breadcrumb %}
+	<a href="{{ path('wiki_show', {slug: item.getInternalKey}) }}">{{ item.slug }}</a>{% if not loop.last %} / {% endif %} 
+		
+	{% endfor %}
+</div>
+	{% endif %}
+
+ <div class="container">
+ <div class="content">
+	<h3 class="title is-3">Die Seite wurde gelöscht.</h3>
+<p>
+	Zurück zu <a href="{{ path('wiki_show', {slug: slug }) }}">{{ slug }}</a>
+	</p>
+	</div>
+	</div>
+
+
+
+</section>
+
+
+{% endblock %}
