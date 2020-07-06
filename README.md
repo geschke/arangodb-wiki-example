@@ -1,4 +1,4 @@
-# Beispielcode Wiki mit ArangoDB aus dem PHP Magazin 05.20
+# Beispielcode Wiki mit ArangoDB aus dem PHP Magazin 5.20
 
 ## Vorbemerkungen
 
